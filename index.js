@@ -4,6 +4,7 @@ const app = express()
 const port = 3000
 const { User } = require("./models/User");
 const bodyParser = require('body-parser');
+const config = require('./config/key');
 
 // application/s-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended : true}));
@@ -11,11 +12,13 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://dong:1234@boilerplate.4k1r6l8.mongodb.net/?retryWrites=true&w=majority')
-    .then(() => console.log('MongoDB Connected...'))
+//mongoose.connect('mongodb+srv://dong:1234@boilerplate.4k1r6l8.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(config.mongoURI, {
+    //usernewUrlParser : true, useUninfiedtopology : true, useCreateIndex : true, useFindAndModify : false
+}).then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err)) 
 
-app.get('/', (req, res) => res.send("Hello world~~~"))
+app.get('/', (req, res) => res.send("Hello world~~~##"))
 app.post('/register', (req, res) => {
     //화원 가입할 때 필요한 정보들을 client에서 가져오면
     //그것들을 데이터 베이스에 넣어준다.
