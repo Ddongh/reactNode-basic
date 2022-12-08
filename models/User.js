@@ -49,8 +49,18 @@ userSchema.pre('save', function(next) {
                 next()
             })
         })
+    } else {
+        next()
     }
 })
+
+userSchema.methods.comparePassword = function(plainPassword, cb) {
+    //plainPassword 1234567     암호화된 비밀번호 $2b$10$.DmdZ8aLbi/1yWfxuh4VLOXPFYiGoS5lKBjjqpu..BTwXslUQ4ttO
+    bcrypt.compare(plainPassword, this.password, function(err, isMach) {
+        if(err) return cb(err),
+        cb(null, isMach)
+    })
+}
 
 const User = mongoose.model('User', userSchema)
 
