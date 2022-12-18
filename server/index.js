@@ -2,11 +2,11 @@ const express = require('express')
 const res = require('express/lib/response')
 const app = express()
 const port = 3000
-const { User } = require("./server/config/models/User");
+const { User } = require("./config/models/User");
 const bodyParser = require('body-parser');
-const config = require('./server/config/key');
+const config = require('./config/key');
 const cookieParser = require('cookie-parser');
-const { auth } = require('./server/config/middleware/auth');
+const { auth } = require('./config/middleware/auth');
 
 // application/s-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended : true}));
