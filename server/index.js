@@ -1,7 +1,7 @@
 const express = require('express')
 const res = require('express/lib/response')
 const app = express()
-const port = 5001
+
 const { User } = require("./models/User");
 //const { User } = require(".server/models/User");
 const bodyParser = require('body-parser');
@@ -96,7 +96,7 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-
-app.listen(port, () => console.log('Example app listening on port ${port}!'))
+const port = 5001
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 
