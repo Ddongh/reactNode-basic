@@ -1,12 +1,14 @@
 const express = require('express')
 const res = require('express/lib/response')
 const app = express()
-const port = 3000
-const { User } = require("./config/models/User");
+const port = 5001
+const { User } = require("./models/User");
+//const { User } = require(".server/models/User");
 const bodyParser = require('body-parser');
 const config = require('./config/key');
 const cookieParser = require('cookie-parser');
-const { auth } = require('./config/middleware/auth');
+//const { auth } = require('./config/middleware/auth');
+const { auth } = require('./middleware/auth');
 
 // application/s-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended : true}));
@@ -22,6 +24,10 @@ mongoose.connect(config.mongoURI, {
     .catch(err => console.log(err))  
 
 app.get('/', (req, res) => res.send("Hello world~~~##"))
+
+app.get('/api/hello', (req, res) => {
+    res.send("안녕하세요~ ")
+})
 app.post('/api/users/register', (req, res) => {
     //화원 가입할 때 필요한 정보들을 client에서 가져오면
     //그것들을 데이터 베이스에 넣어준다.
