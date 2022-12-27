@@ -1,4 +1,7 @@
+import { response } from "express";
 import React, { useState } from "react";
+import Axios from "axios";
+import { useDispatch } from 'react-redux';
 
 function LoginPage() {
 
@@ -14,7 +17,17 @@ function LoginPage() {
     })
 
     const onSubmitHander = (event) => {
-        alert("로그인버튼")
+        event.preventDefault();
+        
+        let body = {
+            email: Email,
+            password: Password
+        }
+
+        Axios.post('api/users/login', body)
+        .then(response => {
+
+        })
     }
 
     return (
