@@ -1,6 +1,6 @@
 import React from 'react';
-//import ReactDOM from 'react-dom/client';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -13,8 +13,8 @@ import ReduxThunk from 'redux-thunk';
 import Reducer from './_reducers';
 //debugger;
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
-
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <Provider
     store={createStoreWithMiddleware(Reducer,
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -24,7 +24,7 @@ ReactDOM.render(
     <App />
   </Provider>
 
-  , document.getElementById('root')
+  // , document.getElementById('root')
 );
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
