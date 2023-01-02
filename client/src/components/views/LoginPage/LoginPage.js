@@ -2,16 +2,15 @@ import React, { useState } from "react";
 // import Axios from "axios";
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
-import { useNavigate } from 'react-router-dom';
-const navigate = useNavigate()
-
-
+import { useNavigate } from "react-router-dom";
 
 function LoginPage(props) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
-    
+
     const onEmailHandler = (event) => {
         setEmail(event.currentTarget.value)
     }
@@ -22,7 +21,6 @@ function LoginPage(props) {
 
     const onSubmitHander = (event) => {
         
-
         event.preventDefault();
         
         let body = {
@@ -34,7 +32,7 @@ function LoginPage(props) {
             .then(response => {
                 if(response.payload.loginSuccess) {
                     //props.history.push('/')
-                    navigate('/landing');
+                    navigate('/');
                 } else {
                     alert("error");
                 }

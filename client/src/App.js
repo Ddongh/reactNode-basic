@@ -6,7 +6,7 @@ import {
   // Link
   Route,
   Routes,
-  BrowserRouter,
+  BrowserRouter as Router,
 } from "react-router-dom";
 import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
@@ -14,18 +14,21 @@ import RegisterPage from './components/views/RegisterPage/RegisterPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <div>
-        <Routes>
-          <Route exact path="/" element={LandingPage()}/>
+        {/* <Router> */}
+          <Routes>
+            <Route path="/" element={<LandingPage />}/>      
+            <Route path="/login" element={<LoginPage />}/>    
+            <Route path="/register" element={<RegisterPage />}/>
+            {/* <Route exact path="/" element={LandingPage()}/>      
+            <Route exact path="/login" element={LoginPage()}/>    
+            <Route exact path="/register" element={RegisterPage()}/> */}
+          </Routes>
+        {/* </Router> */}
           
-          <Route exact path="/login" element={LoginPage()}/>
-          
-          <Route exact path="/register" element={RegisterPage()}/>
-
-        </Routes>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
